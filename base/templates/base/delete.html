@@ -1,0 +1,18 @@
+{% extends 'main.html' %} 
+
+{% block content %}
+
+<div class="w-full flex justify-center">
+    <form class="bg-gray-100 w-1/2 flex flex-col justify-center items-center h-36 shadow-lg" method="POST" action="">
+        {% csrf_token %}
+        <div class="mb-2">
+            <p>Are you sure you want to delete "{{obj}}"?</p>
+        </div>
+        <div>
+            <a class="bg-gray-400 p-2 rounded-lg" href="{{request.META.HTTP_REFERER}}">Go Back</a>
+        <input class="bg-red-400 p-2 rounded-lg" type="submit" value="Confirm">
+        </div>
+    </form>
+</div>
+
+{% endblock %}

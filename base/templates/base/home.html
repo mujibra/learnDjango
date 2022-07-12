@@ -1,0 +1,52 @@
+{% extends 'main.html' %} {% block content %}
+<div class="grid grid-cols-8 gap-4 w-full h-screen">
+  <div class="col-span-1 bg-red-200 p-2 flex flex-col gap-y-3">
+    <p>Browse Topic</p>
+    <hr />
+    <div
+      class="bg-teal-800 p-2 rounded-lg text-white shadow-lg hover:bg-teal-500 cursor-pointer"
+    >
+      <a href="{% url 'home' %}"> All </a>
+    </div>
+    {% for topic in topics %}
+    <div
+      class="bg-teal-800 p-2 rounded-lg text-white shadow-lg hover:bg-teal-500 cursor-pointer"
+    >
+      <a href="{% url 'home' %}?q={{topic.name}}"> {{ topic.name }} </a>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="col-span-6">
+    <p class="mb-2">{{room_count}} rooms available</p>
+    <a class="bg-green-400 p-2 shadow-lg" href="{% url 'create' %}"
+      >Create Room</a
+    >
+    <div class="mt-2">
+      {% for room in rooms %}
+      <div class="mb-4 flex flex-col">
+        <span>@{{room.host.username}}</span>
+        <h5>
+          {{room.id}}. <a href="{% url 'room' room.id %}">{{ room.name }}</a>
+        </h5>
+        <div>
+          {% if request.user == room.host %}
+          <a href="{% url 'update' room.id %}">Edit</a>
+          <a href="{% url 'delete' room.id %}">Delete</a>
+          {% endif %}
+        </div>
+        <div class="w-20 mb-2">
+          <small
+            class="bg-gray-100 p-1 px-2 rounded-xl text-gray-400 self-center"
+            >{{room.topic.name}}</small
+          >
+        </div>
+        <hr />
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="bg-red-300">
+    <p>Recent Update</p>
+  </div>
+</div>
+{% endblock %}
