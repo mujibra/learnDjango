@@ -1,5 +1,6 @@
-from django.urls import URLPattern, path
+from django.urls import URLPattern, path, include
 from . import views
+from django.contrib import admin
 
 urlpatterns = [
     path('login/', views.loginPage, name='login'),
@@ -7,6 +8,7 @@ urlpatterns = [
     path('register/', views.registerPage, name='register'),
     path('', views.home, name='home'),
     path('room/<str:pk>/', views.room, name='room'),
+    path('profile/<str:pk>/', views.userProfile, name='profile'),
     path('create/', views.createRoom, name='create'),
     path('update/<str:pk>/', views.updateRoom, name='update'),
     path('delete/<str:pk>/', views.deleteRoom, name='delete'),

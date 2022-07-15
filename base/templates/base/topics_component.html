@@ -1,0 +1,19 @@
+<p class="text-center font-semibold text-2xl">Browse Topic</p>
+
+<a
+  class="bg-teal-800 p-2 rounded-lg text-white shadow-lg hover:bg-teal-500 cursor-pointer"
+  href="{% url 'home' %}"
+>
+  All
+</a>
+
+{% for topic in topics %}
+
+<a
+  class="bg-teal-800 p-2 rounded-lg text-white shadow-lg hover:bg-teal-500 cursor-pointer"
+  href="{% url 'home' %}?q={{topic.name}}"
+>
+  {{ topic.name }}
+</a>
+
+{% endfor %}

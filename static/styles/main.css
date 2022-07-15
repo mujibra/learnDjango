@@ -1,0 +1,12 @@
+.form__group input,
+.form__group textarea,
+.form__group select {
+  background: #ffff;
+  border: 1px solid #398AB9;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  color: #398AB9;
+  font-weight: 500;
+  outline: none;
+}
